@@ -8,5 +8,5 @@
 
 int add(const char * input)
 {
-   return;
+   return -1;
 }
