@@ -8,7 +8,7 @@
 
 int add(const char * input)
 {
-   if(input=="") return 0;
+   if(input=="" || input=="0") return 0;
    return -1;
 }
 
