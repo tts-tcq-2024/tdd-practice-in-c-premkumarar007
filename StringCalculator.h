@@ -14,24 +14,12 @@ int stringCalculator(const char * str)
     int ans=0, num1=0, num2=0;
  
     for (int i = 0; str[i] != '\0'; i++) {
-        
+
+       if(isdigit(str[i]))
+       {
+           ans+=charToInt(str[i]);
+       }
        
-       
-       if(isdigit(str[i]) && additionFlag==false)
-       {
-           num1=charToInt(str[i]);
-           ans+=num1;
-       }
-       else if(isdigit(str[i]) && additionFlag==true)
-       {
-           num2=charToInt(str[i]);
-           ans+=num2;
-           additionFlag=false;
-       }
-       else
-       {
-           additionFlag=true;
-       }
     }
 
  return ans; 
