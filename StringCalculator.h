@@ -5,11 +5,7 @@
 #include <stdbool.h>
 
 int charToInt(char c) {
-    if (isdigit(c)) {
         return c - '0';
-    } else {
-        return -1;
-    }
 }
 
 int stringCalculator(const char * str)
