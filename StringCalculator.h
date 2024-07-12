@@ -19,7 +19,7 @@ int stringCalculator(const char * str)
  
     for (int i = 0; str[i] != '\0'; i++) {
         
-       if(str[i]==',') additionFlag=true;
+       
        
        if(isdigit(str[i]) && additionFlag==false)
        {
@@ -31,6 +31,10 @@ int stringCalculator(const char * str)
            num2=charToInt(str[i]);
            ans+=num2;
            additionFlag=false;
+       }
+       else
+       {
+           additionFlag=true;
        }
     }
 
