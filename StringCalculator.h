@@ -14,6 +14,8 @@ static void handleSingleNumber(const char** numbers, char delimiter, int* result
 static int parseNumber(const char** numbers, char delimiter);
 static void throwIfNegative(int number, int* negatives, int* negCount);
 static void checkAndHandleNegatives(int* negatives, int negCount);
+static void generateNegativeMessage(char* message, int* negatives, int negCount);
+static void concatenateNegativeNumbers(char* message, int* negatives, int negCount);
 
 int add(const char* numbers) {
     if (numbers == NULL || strlen(numbers) == 0) {
@@ -94,19 +96,28 @@ static void throwIfNegative(int number, int* negatives, int* negCount) {
 static void checkAndHandleNegatives(int* negatives, int negCount) {
     if (negCount > 0) {
         char message[200];
-        sprintf(message, "negatives not allowed: ");
-        for (int i = 0; i < negCount; i++) {
-            char buffer[12];
-            sprintf(buffer, "%d", negatives[i]);
-            strcat(message, buffer);
-            if (i < negCount - 1) {
-                strcat(message, ",");
-            }
-        }
+        generateNegativeMessage(message, negatives, negCount);
         fprintf(stderr, "%s\n", message);
         exit(EXIT_FAILURE);
     }
 }
+
+static void generateNegativeMessage(char* message, int* negatives, int negCount) {
+    sprintf(message, "negatives not allowed: ");
+    concatenateNegativeNumbers(message, negatives, negCount);
+}
+
+static void concatenateNegativeNumbers(char* message, int* negatives, int negCount) {
+    for (int i = 0; i < negCount; i++) {
+        char buffer[12];
+        sprintf(buffer, "%d", negatives[i]);
+        strcat(message, buffer);
+        if (i < negCount - 1) {
+            strcat(message, ",");
+        }
+    }
+}
+
 
 
 #endif
